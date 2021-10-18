@@ -47,10 +47,10 @@ function startGame (e) {
     }
 }
 
-/*SET BOARDTO START POSITIONS*/
+/*SET BOARD TO START POSITIONS*/
 function setBoard (){
-    speedPacman = 5;
-    speedGhosts = 5;
+    speedPacman = 2;
+    speedGhosts = 2;
     pacman.style.marginLeft = '0px';
     pacman.style.marginTop = '0px';
     pacman.style.visibility = 'visible';
@@ -64,9 +64,10 @@ function setBoard (){
     ghost4.style.marginTop = '380px';
     interval = setInterval(function(){
         let score =parseInt(liveScore.innerText);
-        if (score%100 === 0){
-            speedGhosts++;
+        if(score%100 === 0 && score!==0){
+            speedGhosts += 2;
         }
+
         x1 = ghost1.offsetLeft;
         y1 = ghost1.offsetTop;
         moveGhost1(x1,y1);
@@ -87,7 +88,7 @@ function moveGhost1(ghostx, ghosty){
     ghost1.style.visibility = 'visible';
     let pacmanx = pacman.offsetLeft;
     let pacmany = pacman.offsetTop;
-    if (ghostx !== pacmanx || ghosty !== pacmany){
+    if ((ghostx !== pacmanx && (ghostx-pacmanx>20 || ghostx-pacmanx<-20)) || (ghosty !== pacmany && (ghosty-pacmany>20 || ghosty-pacmany<-20))){
         score++;
         liveScore.innerText=score.toString();
         if (ghostx < pacmanx && ghosty < pacmany){
@@ -114,11 +115,7 @@ function moveGhost1(ghostx, ghosty){
         ghost1.style.marginLeft = ghostx + 'px';
         ghost1.style.marginTop = ghosty + 'px';
     } else {
-        console.log('collision detected');
-        speedGhosts = 0;
-        speedPacman = 0;
-        clearInterval(interval);
-        resetBoard();
+        gotEaten();
     }
 }
 
@@ -127,7 +124,7 @@ function moveGhost2(ghostx, ghosty){
     ghost2.style.visibility = 'visible';
     let pacmanx = pacman.offsetLeft;
     let pacmany = pacman.offsetTop;
-    if (ghostx !== pacmanx || ghosty !== pacmany){
+    if ((ghostx !== pacmanx && (ghostx-pacmanx>20 || ghostx-pacmanx<-20)) || (ghosty !== pacmany && (ghosty-pacmany>20 || ghosty-pacmany<-20))){
         liveScore.innerText=score.toString();
         if (ghostx < pacmanx && ghosty < pacmany){
             ghostx+=speedGhosts;
@@ -153,11 +150,7 @@ function moveGhost2(ghostx, ghosty){
         ghost2.style.marginLeft = ghostx + 'px';
         ghost2.style.marginTop = ghosty + 'px';
     } else {
-        console.log('collision detected');
-        speedGhosts = 0;
-        speedPacman = 0;
-        clearInterval(interval);
-        resetBoard();
+        gotEaten();
     }
 }
 
@@ -166,7 +159,7 @@ function moveGhost3(ghostx, ghosty){
     ghost3.style.visibility = 'visible';
     let pacmanx = pacman.offsetLeft;
     let pacmany = pacman.offsetTop;
-    if (ghostx !== pacmanx || ghosty !== pacmany){
+    if ((ghostx !== pacmanx && (ghostx-pacmanx>20 || ghostx-pacmanx<-20)) || (ghosty !== pacmany && (ghosty-pacmany>20 || ghosty-pacmany<-20))){
         liveScore.innerText=score.toString();
         if (ghostx < pacmanx && ghosty < pacmany){
             ghostx+=speedGhosts;
@@ -192,20 +185,16 @@ function moveGhost3(ghostx, ghosty){
         ghost3.style.marginLeft = ghostx + 'px';
         ghost3.style.marginTop = ghosty + 'px';
     } else {
-        console.log('collision detected');
-        speedGhosts = 0;
-        speedPacman = 0;
-        clearInterval(interval);
-        resetBoard();
+        gotEaten();
     }
 }
 
-/*MOVE GHOST 3 TOWARD PACMAN*/
+/*MOVE GHOST 4 TOWARD PACMAN*/
 function moveGhost4(ghostx, ghosty){
     ghost4.style.visibility = 'visible';
     let pacmanx = pacman.offsetLeft;
     let pacmany = pacman.offsetTop;
-    if (ghostx !== pacmanx || ghosty !== pacmany){
+    if ((ghostx !== pacmanx && (ghostx-pacmanx>20 || ghostx-pacmanx<-20)) || (ghosty !== pacmany && (ghosty-pacmany>20 || ghosty-pacmany<-20))){
         liveScore.innerText=score.toString();
         if (ghostx < pacmanx && ghosty < pacmany){
             ghostx+=speedGhosts;
@@ -231,11 +220,7 @@ function moveGhost4(ghostx, ghosty){
         ghost4.style.marginLeft = ghostx + 'px';
         ghost4.style.marginTop = ghosty + 'px';
     } else {
-        console.log('collision detected');
-        speedGhosts = 0;
-        speedPacman = 0;
-        clearInterval(interval);
-        resetBoard();
+        gotEaten();
     }
 }
 
@@ -328,6 +313,13 @@ function movePacman(e) {
     }
 }
 
+function gotEaten(){
+    speedGhosts = 0;
+    speedPacman = 0;
+    clearInterval(interval);
+    alert ('You got eaten by a ghost');
+    resetBoard();
+}
 /*SHOW TIMER*/
 
 const timer = document.getElementById('stopwatch');
