@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    font-family: 'Teko', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../IMG/background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+#game {
+    width: 800px;
+    height: 800px;
+    background-color: #020913;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #00d1ff;
+}
+
+#lives {
+    position: absolute;
+    top: -37px;
+    left: -5px;
+    background-color: #00d1ff;
+}
+
+#lives img {
+    height: 32px;
+    float: left;
+    padding: 5px;
+}
+
+#stopwatch {
+    height: 32px;
+    width: 96px;
+    position: absolute;
+    top: -37px;
+    left: 352px;background-color: #00d1ff;
+    text-align: center;
+    color: #efefef;
+    font-size: 32px;
+    padding: 3px;
+}
+
+#score {
+    position: absolute;
+    top: -37px;
+    right: -5px;
+    background-color: #00d1ff;
+    width: 96px;
+    height: 32px;
+    text-align: right;
+}
+
+#liveScore {
+    font-size: 32px;
+    color: #efefef;
+    padding: 3px;
+}
+
+#gameOver {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 25;
+}
+
+#gameOver img {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-70%);
+}
+
+
+#newGame {
+    background-color: #ddddddaa;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+#newGame H1 {
+    color: #00d1ff;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#player {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url("../IMG/Pacman_HD.png");
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    position: absolute;
+    z-index: 2;
+}
+
+.npc {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    position: absolute;
+    z-index: 2;
+}
+
+#ghost1 {
+    background-image: url("../IMG/artist.png");
+}
+
+#ghost2 {
+    background-image: url("../IMG/cyborg.png");
+}
+
+#ghost3 {
+    background-image: url("../IMG/alien.png");
+}
+
+#ghost4 {
+    background-image: url("../IMG/scared.png");
+}
+
+#highScores {
+    font-size: 32px;
+    color: #fffb00;
+    text-align: center;
+    text-transform: uppercase;
+    width: 300px;
+    height: 100%;
+    background-color: #020913aa;
+    position: absolute;
+    left: 800px;
+    top: 0;
+}
+
+#highScoresNames {
+    float: left;
+    color: deeppink;
+    list-style: none;
+    margin-left: 100px;
+}
+#highScoresScores{
+    float: right;
+    color: #00d1ff;
+    list-style: none;
+    margin-right: 100px;
+}
