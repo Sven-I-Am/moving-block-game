@@ -38,7 +38,7 @@ function startGame (e) {
         gameOverImg.style.visibility = 'hidden';
         lives = 3;
         score = 0;
-        for (i=0; i<hearts.length;i++){
+        for (let i=0; i<hearts.length;i++){
             hearts[i].src = 'IMG/heart.png';
         }
         setBoard();
@@ -70,17 +70,17 @@ function setBoard (){
             speedGhosts += 2;
         }
 
-        x1 = ghost1.offsetLeft;
-        y1 = ghost1.offsetTop;
+        let x1 = ghost1.offsetLeft;
+        let y1 = ghost1.offsetTop;
         moveGhost1(x1,y1);
-        x2 = ghost2.offsetLeft;
-        y2 = ghost2.offsetTop;
+        let x2 = ghost2.offsetLeft;
+        let y2 = ghost2.offsetTop;
         moveGhost2(x2,y2);
-        x3 = ghost3.offsetLeft;
-        y3 = ghost3.offsetTop;
+        let x3 = ghost3.offsetLeft;
+        let y3 = ghost3.offsetTop;
         moveGhost3(x3,y3);
-        x4 = ghost4.offsetLeft;
-        y4 = ghost4.offsetTop;
+        let x4 = ghost4.offsetLeft;
+        let y4 = ghost4.offsetTop;
         moveGhost4(x4,y4);
     }, 100);
 }
@@ -232,8 +232,8 @@ function resetBoard(){
     lives--;
     console.log(lives);
     if (lives !== 0){
-       setBoard();
-       hearts[lives].src = 'IMG/emptyHeart.png';
+        setBoard();
+        hearts[lives].src = 'IMG/emptyHeart.png';
     } else {
         hearts[lives].src = 'IMG/emptyHeart.png';
         gameOver();
@@ -248,7 +248,7 @@ function gameOver(){
     let userInput = prompt("Enter username (only first 3 digits are used)");
     userInput = userInput.toUpperCase();
     let playerName='';
-    for (i=0;i<3;i++){
+    for (let i=0;i<3;i++){
         playerName += userInput.charAt(i);
     }
     let finalScore = parseInt(liveScore.innerText);
@@ -260,19 +260,19 @@ function gameOver(){
     if (player.score >= highScore[0].score || highScore[0].score===0){
         highScore.unshift(player);
     } else {
-        for (i = 1; i < highScore.length; i++) {
-           if (player.score >= highScore[i].score) {
+        for (let i = 1; i < highScore.length; i++) {
+            if (player.score >= highScore[i].score) {
                 highScore[i].name = player.name;
                 highScore[i].score = player.score;
-           } else {
-            highScore.push(player);
-           }
+            } else {
+                highScore.push(player);
+            }
         }
     }
     console.log(highScore);
     highScoresNames.innerHTML ='';
     highScoresScores.innerHTML ='';
-    for (i=0;i<highScore.length;i++){
+    for (let i=0;i<highScore.length;i++){
         if (highScore[i].score !== 0){
             highScoresNames.innerHTML += '<li>'+highScore[i].name+'</li>';
             highScoresScores.innerHTML += '<li>'+highScore[i].score+'</li>';
@@ -328,10 +328,10 @@ function gotEaten(){
 const timer = document.getElementById('stopwatch');
 timer.innerHTML = '00:00:00';
 
-var hr = 0;
-var min = 0;
-var sec = 0;
-var stoptime = true;
+let hr = 0;
+let min = 0;
+let sec = 0;
+let stoptime = true;
 
 function startTimer() {
     if (stoptime === true) {
