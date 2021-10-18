@@ -38,7 +38,7 @@ function startGame (e) {
         lives = 3;
         score = 0;
         for (i=0; i<hearts.length;i++){
-            hearts[i].src = '../IMG/heart.png';
+            hearts[i].src = 'IMG/heart.png';
         }
         setBoard();
         startTimer();
@@ -231,9 +231,9 @@ function resetBoard(){
     console.log(lives);
     if (lives !== 0){
        setBoard();
-       hearts[lives].src = '../IMG/emptyHeart.png';
+       hearts[lives].src = 'IMG/emptyHeart.png';
     } else {
-        hearts[lives].src = '../IMG/emptyHeart.png';
+        hearts[lives].src = 'IMG/emptyHeart.png';
         gameOver();
     }
 }
