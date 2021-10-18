@@ -28,6 +28,7 @@ let highScoresScores = document.getElementById('highScoresScores');
 let speedPacman;
 let speedGhosts;
 let interval;
+let timerInterval;
 let lives;
 
 /*START NEW GAME WITH N KEY*/
@@ -62,6 +63,7 @@ function setBoard (){
     ghost3.style.marginTop = '750px';
     ghost4.style.marginLeft = '380px';
     ghost4.style.marginTop = '380px';
+    startTimer();
     interval = setInterval(function(){
         let score =parseInt(liveScore.innerText);
         if(score%100 === 0 && score!==0){
@@ -317,6 +319,7 @@ function gotEaten(){
     speedGhosts = 0;
     speedPacman = 0;
     clearInterval(interval);
+    clearInterval(timerInterval);
     alert ('You got eaten by a ghost');
     resetBoard();
 }
@@ -372,10 +375,14 @@ function timerCycle() {
 
         timer.innerHTML = hr + ':' + min + ':' + sec;
 
-        setTimeout("timerCycle()", 1000);
+        timerInterval = setTimeout("timerCycle()", 1000);
     }
 }
 
 function resetTimer() {
-    timer.innerHTML = '00:00:00';
+    timer.innerHTML = "00:00:00";
+    stoptime = true;
+    hr = 0;
+    sec = 0;
+    min = 0;
 }
